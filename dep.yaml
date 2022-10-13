@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: flextest
-          image: praveenraj10/app:5
+          image: praveenraj10/app:2
           ports:
             - containerPort: 80
