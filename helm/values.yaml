@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: praveenraj10/k8deploy
   pullPolicy: IfNotPresent
-  tag: "4"
+  tag: "11"
 
 imagePullSecrets: []
 nameOverride: ""
