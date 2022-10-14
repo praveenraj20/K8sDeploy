@@ -18,7 +18,7 @@ podSecurityContext: {}
 securityContext: {}
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
 
 ingress:
   enabled: false
@@ -36,7 +36,7 @@ autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
-  targetCPUUtilizationPercentage: 8080
+  targetCPUUtilizationPercentage: 80
 nodeSelector: {}
 tolerations: []
 affinity: {}
