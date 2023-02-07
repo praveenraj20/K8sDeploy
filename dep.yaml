@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: flextest
-          image: qbrainxcicd.azurecr.io/az-k8deploy-img:22
+          image: qbrainxcicd.azurecr.io/az-k8deploy-img:$(Build.BuildId)
           ports:
             - containerPort: 80
