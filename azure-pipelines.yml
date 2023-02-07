@@ -24,15 +24,22 @@ variables:
   # Name of the new namespace being created to deploy the PR changes.
   k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
 
-stages:
-- task: Gradle@3
+
+steps:
+- task: Gradle@2
   inputs:
     gradleWrapperFile: 'gradlew'
     tasks: 'build'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    gradleOptions: '-Xmx3072m'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
+
+
+stages:
+
 - stage: Build
   displayName: Build stage
   jobs:
