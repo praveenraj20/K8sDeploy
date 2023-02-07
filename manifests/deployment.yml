@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: azk8deployimg 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azk8deployimg
+  template:
+    metadata:
+      labels:
+        app: azk8deployimg 
+    spec:
+      containers:
+        - name: azk8deployimg 
+          image: qbrainxcicd.azurecr.io/azk8deployimg
+          ports:
+          - containerPort: 80
