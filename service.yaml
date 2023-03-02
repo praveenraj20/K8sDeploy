@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: backend-deploy-svc
   namespace: flexcub-testing
-
-
 status:
   loadBalancer: {}
 spec:
@@ -15,8 +13,6 @@ spec:
       targetPort: 8080
   selector:
     app: backend-deploy
-
-
   type: ClusterIP
   sessionAffinity: None
   ipFamilies:

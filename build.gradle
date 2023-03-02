@@ -3,7 +3,8 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
 	id 'java'
 	//common-lib-to-azure
-	id "net.linguica.maven-settings" version "0.5"
+//	id "net.linguica.maven-settings" version "0.5"
+//	id 'maven-publish'
 }
 
 group = 'com.deploy'
@@ -13,20 +14,58 @@ sourceCompatibility = '11'
 repositories {
 	mavenCentral()
 }
+//publishing {
+//	publications {
+//		maven(MavenPublication) {
+//			groupId 'com.qbrainx'
+//			artifactId 'test'
+//			version '1.0-SNAPSHOT'             // Your package version
+//			artifact '/build/libs/kube-1-0.0.1-SNAPSHOT.jar'    //Example: *./target/myJavaClasses.jar*
+//		}
+//	}
+//
+//	// Repositories *to* which Gradle can publish artifacts
+//	repositories {
+//		maven {
+//			url 'https://pkgs.dev.azure.com/praveenrajr/praveenraj/_packaging/maven-repo/maven/v1'
+//			credentials {
+//				username "maven-repo"
+//				password System.getenv("SYSTEM_ACCESSTOKEN") != null ? System.getenv("SYSTEM_ACCESSTOKEN") : vstsMavenAccessToken
+//			}
+//		}
+//	}
+//}
+
+ //Repositories *from* which Gradle can download dependencies
+//repositories {
+//	maven {
+//		url 'https://pkgs.dev.azure.com/praveenrajr/praveenraj/_packaging/maven-repo/maven/v1'
+//		credentials {
+//			username "maven-repo"
+//			password System.getenv("SYSTEM_ACCESSTOKEN") != null ? System.getenv("SYSTEM_ACCESSTOKEN") : vstsMavenAccessToken
+//		}
+//	}
+//}
 
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version: '3.1.5'
+//	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version: '3.1.5'
 	implementation group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin', version: '3.1.5'
 //	implementation 'com:flexcub:1.0-SNAPSHOT@jar.md5'
+	//lib
+//	compileOnly group: 'com.example', name: 'my-library', version: '0.0.1-SNAPSHOT'
+//	compileOnly group: 'com.qbrainx', name: 'test', version: '1.0-SNAPSHOT'
+//	compileOnly group: 'com.azureapp', name: 'dbtest', version: '1.0-SNAPSHOT'
+//	compile(group: 'com.azureapp', name: 'dbtest', version: '1.0-SNAPSHOT')
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
-jar{
-	enabled=false;
-}
+//jar{
+//	enabled=true;
+//}

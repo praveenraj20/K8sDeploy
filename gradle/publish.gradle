@@ -1,35 +1,35 @@
-apply plugin: 'java'
-apply plugin: 'maven-publish'
-
-publishing {
-    publications {
-        myPublication(MavenPublication) {
-            groupId 'com.deploy'
-            artifactId 'kube'
-            version '0.0.1-SNAPSHOT'             // Your package version
-            artifact '*./build/libs/kube-0.0.1-SNAPSHOT.jar'    //Example: *./target/myJavaClasses.jar*
-        }
-    }
-
-    // Repositories *to* which Gradle can publish artifacts
-    repositories {
-        maven {
-            url 'https://pkgs.dev.azure.com/praveenrajr/praveenraj/_packaging/common-lib/maven/v1'
-            credentials {
-                username "common-lib"
-                password System.getenv("SYSTEM_ACCESSTOKEN") != null ? System.getenv("SYSTEM_ACCESSTOKEN") : vstsMavenAccessToken
-            }
-        }
-    }
-}
-
-// Repositories *from* which Gradle can download dependencies
-repositories {
-    maven {
-        url 'https://pkgs.dev.azure.com/praveenrajr/praveenraj/_packaging/common-lib/maven/v1'
-        credentials {
-            username "common-lib"
-            password System.getenv("SYSTEM_ACCESSTOKEN") != null ? System.getenv("SYSTEM_ACCESSTOKEN") : vstsMavenAccessToken
-        }
-    }
-}
+//apply plugin: 'java'
+//apply plugin: 'maven-publish'
+//
+//publishing {
+//    publications {
+//        myPublication(MavenPublication) {
+//            groupId 'com.deploy'
+//            artifactId 'kube'
+//            version '0.0.1-SNAPSHOT'             // Your package version
+//            artifact '*./build/libs/kube-0.0.1-SNAPSHOT.jar'    //Example: *./target/myJavaClasses.jar*
+//        }
+//    }
+//
+//    // Repositories *to* which Gradle can publish artifacts
+//    repositories {
+//        maven {
+//            url 'https://pkgs.dev.azure.com/praveenrajr/praveenraj/_packaging/common-lib/maven/v1'
+//            credentials {
+//                username "common-lib"
+//                password System.getenv("SYSTEM_ACCESSTOKEN") != null ? System.getenv("SYSTEM_ACCESSTOKEN") : vstsMavenAccessToken
+//            }
+//        }
+//    }
+//}
+//
+//// Repositories *from* which Gradle can download dependencies
+//repositories {
+//    maven {
+//        url 'https://pkgs.dev.azure.com/praveenrajr/praveenraj/_packaging/common-lib/maven/v1'
+//        credentials {
+//            username "common-lib"
+//            password System.getenv("SYSTEM_ACCESSTOKEN") != null ? System.getenv("SYSTEM_ACCESSTOKEN") : vstsMavenAccessToken
+//        }
+//    }
+//}
