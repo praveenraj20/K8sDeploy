@@ -23,31 +23,40 @@ jobs:
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: build
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v4
+      - name: Analyze with SonarCloud
+        uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }} 
         with:
-          images: praveenraj10/k8deploy
-          tags: |
-            type=raw,value={{date 'Y-m-d-H-M-S'}}
-      - name: Login to DockerHub
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME}}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Docker build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-      - name: Kuberentes (k8s) cli - kubectl
-        uses: actions-hub/kubectl@v1.24.0
-        env :
-          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-        with:
-          args: set image deployment/backend-deploy backend-deploy=${{ steps.meta.outputs.tags }} -n flexcub-testing
+          args:
+            -Dsonar.projectKey=praveenraj20
+            -Dsonar.organization=praveenraj20   
+#       - name: Docker meta
+#         id: meta
+#         uses: docker/metadata-action@v4
+#         with:
+#           images: praveenraj10/k8deploy
+#           tags: |
+#             type=raw,value={{date 'Y-m-d-H-M-S'}}
+#       - name: Login to DockerHub
+#         if: github.event_name != 'pull_request'
+#         uses: docker/login-action@v1
+#         with:
+#           username: ${{ secrets.DOCKER_USERNAME}}
+#           password: ${{ secrets.DOCKER_PASSWORD }}
+#       - name: Docker build and push
+#         uses: docker/build-push-action@v2
+#         with:
+#           context: .
+#           push: ${{ github.event_name != 'pull_request' }}
+#           tags: ${{ steps.meta.outputs.tags }}
+#           labels: ${{ steps.meta.outputs.labels }}
+#       - name: Kuberentes (k8s) cli - kubectl
+#         uses: actions-hub/kubectl@v1.24.0
+#         env :
+#           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+#         with:
+#           args: set image deployment/backend-deploy backend-deploy=${{ steps.meta.outputs.tags }} -n flexcub-testing
 
 
