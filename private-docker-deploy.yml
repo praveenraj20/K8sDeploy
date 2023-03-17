@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flexcub-app
+  namespace: flexcub-app
+  labels:
+    app: flexcub-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flexcub-app
+  template:
+    metadata:
+      labels:
+        app: flexcub-app
+    spec:
+      containers:
+        - name: flexcub-app
+          image: flexcubhub/testing:dev-app-2023-3-14-T-5-1-52
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: flexcub-secret
