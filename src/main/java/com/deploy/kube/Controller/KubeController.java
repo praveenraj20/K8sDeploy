@@ -11,7 +11,7 @@ public class KubeController {
 
     @GetMapping(value = "/get")
     public String get() {
-        return "Welcome to Zipkin Server ....";
+        return "Welcome to Zipkin Server....";
     }
 
 }

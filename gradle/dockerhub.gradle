@@ -9,7 +9,7 @@ jib {
     }
     to {
         allowInsecureRegistries = true
-        image = "praveenraj10/k8deploy:22"
+        image = "praveenraj10/k8deploy:21"
         auth {
             username = "praveenraj10"
             password = "Praveenconqueror@123"

@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.7.4'
 	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+	id "com.google.cloud.tools.jib" version "3.2.1"
 	id 'java'
 	//common-lib-to-azure
 //	id "net.linguica.maven-settings" version "0.5"
@@ -10,6 +11,8 @@ plugins {
 group = 'com.deploy'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+apply from: "./gradle/dockerhub.gradle"
 
 repositories {
 	mavenCentral()
@@ -51,9 +54,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
 
 //	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version: '3.1.5'
-	implementation group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin', version: '3.1.5'
+//	implementation group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin', version: '3.1.5'
 //	implementation 'com:flexcub:1.0-SNAPSHOT@jar.md5'
 	//lib
 //	compileOnly group: 'com.example', name: 'my-library', version: '0.0.1-SNAPSHOT'
