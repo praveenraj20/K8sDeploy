@@ -1,3 +1,82 @@
+jib {
+    allowInsecureRegistries = true
+    from {
+        image = "azul/zulu-openjdk-alpine:11.0.4"
+        auth {
+            username = "praveenraj10"
+            password = "Praveenconqueror@123"
+        }
+    }
+    to {
+        allowInsecureRegistries = true
+        image = "praveenraj10/k8deploy:22"
+        auth {
+            username = "praveenraj10"
+            password = "Praveenconqueror@123"
+        }
+//        tags = ['latest']
+    }
+    container {
+        creationTime = "USE_CURRENT_TIMESTAMP"
+        jvmFlags = ['-Djava.security.egd=file:/dev/./urandom', '-Dspring.profiles.active=${env}']
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//**********************************************************
 //apply plugin: 'java'
 //apply plugin: 'maven-publish'
 //
