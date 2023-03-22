@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class KubeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(KubeApplication.class, args);
-		System.out.println("zipkin-check");
+		System.out.println("check...");
 	}
 }
